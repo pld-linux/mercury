@@ -15,7 +15,7 @@ URL:		http://www.cs.mu.oz.au/mercury/
 BuildRequires:	autoconf
 BuildRequires:	automake
 %if %{_gcc_ver} == 3
-BuildRequires:  gcc2-c++
+BuildRequires:	gcc2-c++
 %endif
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -62,7 +62,7 @@ Nie zawiera zestawu "extras", który jest dostêpny z
 %patch0 -p1
 
 %build
-install /usr/share/automake/config.* .
+install %{_datadir}/automake/config.* .
 %{__aclocal}
 %{__autoconf}
 %configure
