@@ -10,6 +10,7 @@ Release:	1
 License:	GPL and LGPL
 Group:		Development/Languages
 Source0:	ftp://ftp.mercury.cs.mu.oz.au/pub/mercury/%{name}-compiler-%{version}.tar.gz
+# Source0-md5:	198c8e3ebfd28959450785caac7dd94f
 Patch0:		%{name}-tinfo.patch
 URL:		http://www.cs.mu.oz.au/mercury/
 BuildRequires:	autoconf
