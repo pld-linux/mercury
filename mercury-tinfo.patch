@@ -1,0 +1,18 @@
+--- mercury-compiler-0.10.1/aclocal.m4~	Mon Apr  2 17:50:09 2001
++++ mercury-compiler-0.10.1/aclocal.m4	Tue Feb 26 20:05:39 2002
+@@ -35,10 +35,11 @@
+ 
+ 	# check for the libraries that readline depends on
+ 	MERCURY_MSG('looking for termcap or curses (needed by readline)...')
+-	AC_CHECK_LIB(termcap, tgetent, mercury_cv_termcap_lib=-ltermcap,
+-	 [AC_CHECK_LIB(curses,  tgetent, mercury_cv_termcap_lib=-lcurses,
+-	  [AC_CHECK_LIB(ncurses, tgetent, mercury_cv_termcap_lib=-lncurses,
+-	   mercury_cv_termcap_lib='')])])
++	AC_CHECK_LIB(tinfo, tgetent, mercury_cv_termcap_lib=-ltinfo,
++	 [AC_CHECK_LIB(termcap, tgetent, mercury_cv_termcap_lib=-ltermcap,
++	  [AC_CHECK_LIB(curses,  tgetent, mercury_cv_termcap_lib=-lcurses,
++	   [AC_CHECK_LIB(ncurses, tgetent, mercury_cv_termcap_lib=-lncurses,
++	    mercury_cv_termcap_lib='')])])])
+ 
+ 	# check for the readline library
+ 	AC_CHECK_LIB(readline, readline, mercury_cv_have_readline=yes,
