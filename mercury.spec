@@ -3,6 +3,7 @@
 %define		_gcc_ver	%(%{__cc} -dumpversion | cut -b 1)
 
 Summary:	The logic/functional programming language Mercury
+Summary(pl):	Logiczno-funkcyjny jêzyk programowania Mercury
 Name:		mercury
 Version:	0.10.1
 Release:	1
@@ -11,11 +12,12 @@ Group:		Development/Languages
 Source0:	ftp://ftp.mercury.cs.mu.oz.au/pub/mercury/%{name}-compiler-%{version}.tar.gz
 Patch0:		%{name}-tinfo.patch
 URL:		http://www.cs.mu.oz.au/mercury/
-BuildRequires:	readline-devel
 BuildRequires:	autoconf
+BuildRequires:	automake
 %if %{_gcc_ver} == 3
 BuildRequires:  gcc2-c++
 %endif
+BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # needs to be built by gcc 2.x
@@ -41,6 +43,20 @@ This package includes the compiler, profiler, debugger, documentation,
 etc. It does NOT include the "extras" distribution; that is available
 from <http://www.cs.mu.oz.au/mercury/download/release.html>.
 
+%description -l pl
+Mercury jest nowoczesnym, logiczno-funkcyjnym jêzykiem programowania,
+który ³±czy jasno¶æ i pe³niê wyrazu programowania deklaracyjnego z
+rozszerzonymi mo¿liwo¶ciami statycznej analizy i wykrywania b³êdów.
+Bardzo zoptymalizowany algorytm wykonywania daje o wiele wiêksz±
+wydajno¶æ ni¿ istniej±ce systemy programowania logicznego, i prawie
+tak du¿±, jak konwencjonalne systemy. Mercury wychodzi naprzeciw
+problemom tworzenia oprogramowania na du¿± skalê, pozwalaj±c na
+modularno¶æ, oddzieln± kompilacjê i liczne optymalizacje.
+
+Ten pakiet zawiera kompilator, profiler, debugger, dokumentacjê itp.
+Nie zawiera zestawu "extras", który jest dostêpny z
+<http://www.cs.mu.oz.au/mercury/download/release.html>.
+
 %prep
 %setup -q -n %{name}-compiler-%{version}
 %patch0 -p1
@@ -65,6 +81,8 @@ cp -a samples $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 find $RPM_BUILD_ROOT%{_examplesdir} -name "CVS" -type "d" | xargs rm -rf
 
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
@@ -88,6 +106,3 @@ find $RPM_BUILD_ROOT%{_examplesdir} -name "CVS" -type "d" | xargs rm -rf
 %{_examplesdir}/%{name}-%{version}
 %{_mandir}/man*/*
 %{_infodir}/*.info*
-
-%clean
-rm -rf $RPM_BUILD_ROOT
