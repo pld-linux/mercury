@@ -8,7 +8,7 @@ Version:	0.10.1
 Release:	1
 License:	GPL and LGPL
 Group:		Development/Languages
-Source0:	ftp.mercury.cs.mu.oz.au:/pub/mercury/%{name}-compiler-%{version}.tar.gz
+Source0:	ftp://ftp.mercury.cs.mu.oz.au/pub/mercury/%{name}-compiler-%{version}.tar.gz
 Patch0:		%{name}-tinfo.patch
 URL:		http://www.cs.mu.oz.au/mercury/
 BuildRequires:	readline-devel
