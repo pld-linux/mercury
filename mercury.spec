@@ -1,5 +1,4 @@
 # TODO:
-# - check gcc 3.3.1-pre end eventually generate bug report
 # - add mercury backend for gcc
 Summary:	The logic/functional programming language Mercury
 Summary(pl):	Logiczno-funkcyjny jêzyk programowania Mercury
@@ -16,15 +15,10 @@ Patch2:		%{name}-nolibs.patch
 URL:		http://www.cs.mu.oz.au/mercury/
 BuildRequires:	autoconf
 BuildRequires:	automake
-# can use gcc 2.95.x or 3.2 (3.0 is broken)
-BuildRequires:	libstdc++-devel >= 5:3.2
+# can use gcc 2.95.x, 3.2.x or 3.3.2+ (3.0 and 3.3.[01] are broken)
+BuildRequires:	libstdc++-devel >= 5:3.3.2
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-# any -O triggers ICE in gcc 3.3
-%if !0%(%{__cc} -dumpversion | grep -q '3\.3' ; echo $?)
-%define		optflags	-O0
-%endif
 
 %description
 Mercury is a modern logic/functional programming language, which
