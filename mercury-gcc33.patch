@@ -1,0 +1,22 @@
+--- mercury-compiler-0.11.0/library/table_builtin.c.orig	Mon Dec 23 19:15:48 2002
++++ mercury-compiler-0.11.0/library/table_builtin.c	Fri Aug  1 14:59:13 2003
+@@ -652,8 +652,7 @@
+ 
+ #ifdef	MR_DEBUG_RETRY
+ 			if (MR_io_tabling_debug) {
+-				printf(" in range
+-");
++				printf(" in range\n");
+ 			}
+ #endif
+ 
+@@ -662,8 +661,7 @@
+ 
+ #ifdef	MR_DEBUG_RETRY
+ 			if (MR_io_tabling_debug) {
+-				printf(" not in range
+-");
++				printf(" not in range\n");
+ 			}
+ #endif
+ 			SUCCESS_INDICATOR = MR_FALSE;
