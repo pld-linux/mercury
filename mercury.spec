@@ -1,33 +1,29 @@
-# TODO: add mercury backend for gcc
-
-%define		_gcc_ver	%(%{__cc} -dumpversion | cut -b 1)
-
+# TODO:
+# - check gcc 3.3.1-pre end eventually generate bug report
+# - add mercury backend for gcc
 Summary:	The logic/functional programming language Mercury
 Summary(pl):	Logiczno-funkcyjny jêzyk programowania Mercury
 Name:		mercury
-Version:	0.10.1
+Version:	0.11.0
 Release:	1
 License:	GPL and LGPL
 Group:		Development/Languages
-Source0:	ftp://ftp.mercury.cs.mu.oz.au/pub/mercury/%{name}-compiler-%{version}.tar.gz
-# Source0-md5:	198c8e3ebfd28959450785caac7dd94f
+Source0:	http://www.cs.mu.oz.au/research/mercury/download/files/%{name}-compiler-%{version}.tar.gz
+# Source0-md5:	ccef86b46ffc043bdcd3a4775d084446
 Patch0:		%{name}-tinfo.patch
+Patch1:		%{name}-gcc33.patch
+Patch2:		%{name}-nolibs.patch
 URL:		http://www.cs.mu.oz.au/mercury/
 BuildRequires:	autoconf
 BuildRequires:	automake
-%if %{_gcc_ver} == 3
-BuildRequires:	gcc2-c++
-%endif
+# can use gcc 2.95.x or 3.2 (3.0 is broken)
+BuildRequires:	libstdc++-devel >= 5:3.2
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-# needs to be built by gcc 2.x
-%if %{_gcc_ver} == 3
-%define         __cc		gcc2
-%define         __cxx		g++2
-%ifarch athlon
-%define         rpmcflags	-O2 -march=i686
-%endif
+# any -O triggers ICE in gcc 3.3
+%if !0%(%{__cc} -dumpversion | grep -q '3\.3' ; echo $?)
+%define		optflags	-O0
 %endif
 
 %description
@@ -61,6 +57,10 @@ Nie zawiera zestawu "extras", który jest dostêpny z
 %prep
 %setup -q -n %{name}-compiler-%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+
+%{__perl} -pi -e 's/OPT_OPTS="-O2.*"/OPT_OPTS="%{rpmcflags}%{!?debug: -fomit-frame-pointer}"/' scripts/mgnuc.in
 
 %build
 install %{_datadir}/automake/config.* .
@@ -96,6 +96,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc README README.Linux NEWS RELEASE_NOTES WORK_IN_PROGRESS HISTORY LIMITATIONS
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/mercury
+%dir %{_libdir}/mercury/bin
+%dir %{_libdir}/mercury/bin/*
 %attr(755,root,root) %{_libdir}/mercury/bin/*/*
 %{_libdir}/mercury/elisp
 %{_libdir}/mercury/inc
