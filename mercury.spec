@@ -17,6 +17,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 # can use gcc 2.95.x, 3.2.x or 3.3.2+ (3.0 and 3.3.[01] are broken)
 BuildRequires:	libstdc++-devel >= 5:3.3.2
+BuildRequires:	perl-base
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -57,7 +58,7 @@ Nie zawiera zestawu "extras", który jest dostêpny z
 %{__perl} -pi -e 's/OPT_OPTS="-O2.*"/OPT_OPTS="%{rpmcflags}%{!?debug: -fomit-frame-pointer}"/' scripts/mgnuc.in
 
 %build
-install %{_datadir}/automake/config.* .
+install /usr/share/automake/config.* .
 %{__aclocal}
 %{__autoconf}
 %configure
