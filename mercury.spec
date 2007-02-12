@@ -1,7 +1,7 @@
 # TODO:
 # - add mercury backend for gcc
 Summary:	The logic/functional programming language Mercury
-Summary(pl):	Logiczno-funkcyjny jêzyk programowania Mercury
+Summary(pl.UTF-8):   Logiczno-funkcyjny jÄ™zyk programowania Mercury
 Name:		mercury
 Version:	0.11.0
 Release:	1
@@ -35,18 +35,18 @@ This package includes the compiler, profiler, debugger, documentation,
 etc. It does NOT include the "extras" distribution; that is available
 from <http://www.cs.mu.oz.au/mercury/download/release.html>.
 
-%description -l pl
-Mercury jest nowoczesnym, logiczno-funkcyjnym jêzykiem programowania,
-który ³±czy jasno¶æ i pe³niê wyrazu programowania deklaracyjnego z
-rozszerzonymi mo¿liwo¶ciami statycznej analizy i wykrywania b³êdów.
-Bardzo zoptymalizowany algorytm wykonywania daje o wiele wiêksz±
-wydajno¶æ ni¿ istniej±ce systemy programowania logicznego, i prawie
-tak du¿±, jak konwencjonalne systemy. Mercury wychodzi naprzeciw
-problemom tworzenia oprogramowania na du¿± skalê, pozwalaj±c na
-modularno¶æ, oddzieln± kompilacjê i liczne optymalizacje.
+%description -l pl.UTF-8
+Mercury jest nowoczesnym, logiczno-funkcyjnym jÄ™zykiem programowania,
+ktÃ³ry Å‚Ä…czy jasnoÅ›Ä‡ i peÅ‚niÄ™ wyrazu programowania deklaracyjnego z
+rozszerzonymi moÅ¼liwoÅ›ciami statycznej analizy i wykrywania bÅ‚Ä™dÃ³w.
+Bardzo zoptymalizowany algorytm wykonywania daje o wiele wiÄ™kszÄ…
+wydajnoÅ›Ä‡ niÅ¼ istniejÄ…ce systemy programowania logicznego, i prawie
+tak duÅ¼Ä…, jak konwencjonalne systemy. Mercury wychodzi naprzeciw
+problemom tworzenia oprogramowania na duÅ¼Ä… skalÄ™, pozwalajÄ…c na
+modularnoÅ›Ä‡, oddzielnÄ… kompilacjÄ™ i liczne optymalizacje.
 
-Ten pakiet zawiera kompilator, profiler, debugger, dokumentacjê itp.
-Nie zawiera zestawu "extras", który jest dostêpny z
+Ten pakiet zawiera kompilator, profiler, debugger, dokumentacjÄ™ itp.
+Nie zawiera zestawu "extras", ktÃ³ry jest dostÄ™pny z
 <http://www.cs.mu.oz.au/mercury/download/release.html>.
 
 %prep
