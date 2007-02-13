@@ -1,7 +1,7 @@
 # TODO:
 # - add mercury backend for gcc
 Summary:	The logic/functional programming language Mercury
-Summary(pl.UTF-8):   Logiczno-funkcyjny język programowania Mercury
+Summary(pl.UTF-8):	Logiczno-funkcyjny język programowania Mercury
 Name:		mercury
 Version:	0.11.0
 Release:	1
